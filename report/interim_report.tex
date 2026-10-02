@@ -107,7 +107,7 @@ Howard and Ruder (2018) [10] & ULMFiT & Text classification & Transfer learning 
 The project uses the IMDb Large Movie Review Dataset introduced by Maas et al. [1]. It contains 50,000 labelled reviews, balanced between positive and negative classes, with 25,000 official training reviews and 25,000 official test reviews. The archive is downloaded locally and excluded from Git.
 
 \subsection*{Data Splits}
-The official training directory is shuffled with seed 42 and divided into 80\% training and 20\% validation. The official test directory remains untouched until evaluation. The current larger interim runs use 3,200 training, 800 validation, and 1,000 test reviews; the BiLSTM CPU smoke run uses 800, 200, and 200 reviews.
+The official training directory is shuffled with seed 42 and divided into 80\% training and 20\% validation. The official test directory remains untouched until evaluation. The verified MLP full-protocol run uses 20,000 training, 5,000 validation, and 25,000 test reviews and was trained for three epochs. The CNN interim run uses 3,200 training, 800 validation, and 1,000 test reviews; the BiLSTM CPU smoke run uses 800, 200, and 200 reviews.
 
 \subsection*{Preprocessing Pipeline}
 \begin{enumerate}[nosep]
