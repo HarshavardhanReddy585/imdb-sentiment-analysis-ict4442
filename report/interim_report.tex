@@ -107,7 +107,7 @@ Howard and Ruder (2018) [10] & ULMFiT & Text classification & Transfer learning 
 The project uses the IMDb Large Movie Review Dataset introduced by Maas et al. [1]. It contains 50,000 labelled reviews, balanced between positive and negative classes, with 25,000 official training reviews and 25,000 official test reviews. The archive is downloaded locally and excluded from Git.
 
 \subsection*{Data Splits}
-The official training directory is shuffled with seed 42 and divided into 80\% training and 20\% validation. The official test directory remains untouched until evaluation. The verified MLP full-protocol run uses 20,000 training, 5,000 validation, and 25,000 test reviews and was trained for three epochs. The CNN interim run uses 3,200 training, 800 validation, and 1,000 test reviews; the BiLSTM CPU smoke run uses 800, 200, and 200 reviews.
+The official training directory is shuffled with seed 42 and divided into 80\% training and 20\% validation. The official test directory remains untouched until evaluation. The verified MLP and CNN full-protocol runs use 20,000 training, 5,000 validation, and 25,000 test reviews and were trained for three epochs. The BiLSTM CPU smoke run uses 800, 200, and 200 reviews.
 
 \subsection*{Preprocessing Pipeline}
 \begin{enumerate}[nosep]
@@ -125,13 +125,60 @@ The repository contains reproducible PyTorch implementations for the MLP, 1D-CNN
 The MLP uses a learned embedding layer, masked average pooling, a 64-unit ReLU hidden layer, dropout, and a binary classifier. It was trained for three epochs on the full 20,000/5,000/25,000 protocol. Validation accuracy was 88.50\% with F1 = 0.884; test accuracy was 86.31\% with F1 = 0.858.
 
 \subsection*{B. 1D Convolutional Neural Network (1D-CNN)}
-The CNN uses a learned embedding layer and parallel Conv1D branches with kernel widths 3, 4, and 5, followed by max pooling and classification. On the same two-epoch interim subset, validation accuracy was 61.5\% with F1 = 0.693; test accuracy was 58.2\% with F1 = 0.671. The positive-class recall bias is recorded as a tuning risk.
+The CNN uses a learned embedding layer and parallel Conv1D branches with kernel widths 3, 4, and 5, followed by max pooling and classification. On the full 20,000/5,000/25,000 protocol, validation accuracy was 79.64\% with F1 = 0.783; test accuracy was 79.53\% with F1 = 0.780. The remaining tuning focus is improving the balance between precision and recall.
 
 \subsection*{C. Bidirectional LSTM (BiLSTM)}
 The BiLSTM uses an embedding layer, a bidirectional LSTM, concatenated final hidden states, and a binary classifier. The CPU smoke run on 800 training, 200 validation, and 200 test reviews achieved 46.5\% validation accuracy and 51.0\% test accuracy. These values are preliminary and require a larger rerun.
 
 \subsection*{D. DistilBERT}
 DistilBERT is the fourth proposed architecture. Its implementation and metrics are not yet evidenced in the canonical repository, so its status is recorded as pending.
+
+\subsection*{Interim Results and Visual Evidence}
+The numerical evidence below is generated from the JSON files in \texttt{results/}. The accompanying notebook \texttt{notebooks/interim\_results\_visualization.ipynb} loads those files and displays the same figures. The MLP and CNN results are full-protocol results; the BiLSTM value is explicitly labelled as smoke evidence.
+
+\begin{table}[H]
+\caption{Verified interim test results}
+\centering\small\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l c c c c X}
+\toprule
+\textbf{Model} & \textbf{Train} & \textbf{Validation} & \textbf{Test} & \textbf{Test F1} & \textbf{Evidence status} \\
+\midrule
+MLP & 20,000 & 5,000 & 25,000 & 0.858 & Full three-epoch protocol completed. \\
+\midrule
+1D-CNN & 20,000 & 5,000 & 25,000 & 0.780 & Full three-epoch protocol completed. \\
+\midrule
+BiLSTM & 800 & 200 & 200 & 0.372 & Harshavardhan's CPU smoke evidence; model in progress. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/verified_test_comparison.png}
+\caption{Test accuracy and F1 score from the verified interim JSON metrics.}
+\label{fig:testcomparison}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/mlp_confusion_matrices.png}
+\caption{MLP validation and test confusion matrices from the full-protocol run.}
+\label{fig:mlpcm}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/cnn_confusion_matrices.png}
+\caption{CNN validation and test confusion matrices from the completed full-protocol run.}
+\label{fig:cnncm}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/bilstm_confusion_matrices.png}
+\caption{BiLSTM validation and test confusion matrices from the CPU smoke run.}
+\label{fig:bilstmcm}
+\end{figure}
 
 \begin{table}[H]
 \caption{Models Implemented - Status and Preliminary Results}
@@ -142,7 +189,7 @@ DistilBERT is the fourth proposed architecture. Its implementation and metrics a
 \midrule
 MLP & Kshitij Singh & Complete & Val Acc: 88.50\%\\Val F1: 0.884 & Full 20,000/5,000/25,000 run; 512-token inputs. \\
 \midrule
-1D-CNN & Ratul Jha & Complete & Val Acc: 61.5\%\\Val F1: 0.693 & Same split; positive-class recall bias requires tuning. \\
+1D-CNN & Ratul Jha & Complete & Val Acc: 79.64\%\\Test Acc: 79.53\% & Full 20,000/5,000/25,000 run; evidence available. \\
 \midrule
 BiLSTM & Harshavardhan Reddy & Smoke evidence & Val Acc: 46.5\%\\Test Acc: 51.0\% & CPU smoke run; larger rerun pending. \\
 \midrule
@@ -163,7 +210,7 @@ Meesha Gupta & 230953090 & DistilBERT ownership recorded; implementation and evi
 \midrule
 Ratul Jha & 230953338 & 1D-CNN ownership recorded; repository invitation pending acceptance; contribution to be verified. & \\
 \midrule
-Harshavardhan Reddy & 230953396 & Report integration, preprocessing, MLP/CNN/BiLSTM experiment orchestration, and repository maintenance completed. & \\
+Harshavardhan Reddy & 230953396 & Main contributor: report integration, preprocessing, experiment orchestration, result visualisation, and BiLSTM implementation in progress. & \\
 \midrule
 Kshitij Singh & 230953460 & MLP ownership recorded; contribution to be verified. & \\
 \bottomrule
@@ -184,7 +231,7 @@ Kshitij Singh & 230953460 & MLP ownership recorded; contribution to be verified.
 \subsection*{Expected Challenges}
 \begin{itemize}[nosep]
 \item CPU runtime may limit full-scale recurrent and Transformer training; staged runs and saved metrics will be used.
-\item The current CNN smoke result has a positive-class bias; class balance, learning rate, and training duration require tuning.
+\item The CNN still requires tuning to improve the balance between precision and recall.
 \item A fair comparison requires a frozen split, seed, metric set, and explicit documentation of tokenizer differences.
 \item Late submission may require faculty approval; the report and repository evidence are being prepared immediately.
 \end{itemize}

@@ -43,11 +43,11 @@ The implementation is deliberately CPU-friendly for the delayed interim submissi
 | Model | Owner | Status | Preliminary metric | Notes |
 |---|---|---|---|---|
 | MLP with averaged learned embeddings | Kshitij Singh | Implemented in `src/models/mlp.py` and `src/train_scratch_models.py` | Validation accuracy 88.50%, F1 0.884 | Three-epoch PyTorch run on the full 20,000 train / 5,000 validation / 25,000 test protocol with 512-token inputs; test accuracy 86.31%, F1 0.858. |
-| 1D-CNN with max-pooled multi-width filters | Ratul Jha | Implemented in `src/models/cnn1d.py` and `src/train_scratch_models.py` | Validation accuracy 61.5%, F1 0.693 | Two-epoch PyTorch interim run on the same split with 512-token inputs; test accuracy 58.2%, F1 0.671 and a positive-class recall bias remains. |
+| 1D-CNN with max-pooled multi-width filters | Ratul Jha | Implemented in `src/models/cnn1d.py` and `src/train_scratch_models.py` | Validation accuracy 79.64%, F1 0.783 | Full three-epoch PyTorch run on the common 20,000/5,000/25,000 protocol with 512-token inputs; test accuracy 79.53%, F1 0.780. |
 | BiLSTM | Harshavardhan Reddy | Implemented in `src/models/bilstm.py` and `src/train_bilstm.py` | Validation accuracy 46.5%, F1 0.389; smoke test accuracy 51.0%, F1 0.372 | Two-epoch CPU smoke run on the common 800/200/200 split; needs tuning and full-scale rerun. |
 | DistilBERT | Meesha Gupta | Planned / not evidenced in current folder | Pending | Fine-tune after baseline comparison; record model version and hyperparameters. |
 
-The reported values come from real runs with seed 42 and the official IMDb folder split. The MLP uses the full 20,000/5,000/25,000 protocol with 512-token inputs. The CNN uses a 3,200/800/1,000 interim subset, while BiLSTM uses a smaller 800/200/200 CPU smoke split with 40-token inputs. They are preliminary and intentionally not presented as final performance. The generated JSON files are checked into the repository as evidence.
+The reported values come from real runs with seed 42 and the official IMDb folder split. The MLP and CNN use the full 20,000/5,000/25,000 protocol with 512-token inputs, while BiLSTM uses a smaller 800/200/200 CPU smoke split with 40-token inputs. They are preliminary and intentionally not presented as final performance. The generated JSON files are checked into the repository as evidence.
 
 ## 4. Individual Contribution Log
 
@@ -62,7 +62,7 @@ The following evidence is available in the canonical GitHub repository at the ti
 - Two commits documenting the model/evidence work: `8544666` and `6dee82d`.
 - Python compilation and model-import checks completed successfully.
 
-The MLP result is full-protocol evidence; the CNN and BiLSTM results are interim subset/smoke evidence. DistilBERT, full-scale CNN/BiLSTM training, learning curves, and systematic error analysis remain outstanding.
+The MLP and CNN results are full-protocol evidence; the BiLSTM result is smoke evidence. DistilBERT, a larger BiLSTM run, learning curves, and systematic error analysis remain outstanding.
 
 | Member | Registration no. | Task completed to date | Signature |
 |---|---:|---|---|
