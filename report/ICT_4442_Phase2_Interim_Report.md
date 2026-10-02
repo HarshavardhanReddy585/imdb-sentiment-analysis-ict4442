@@ -3,7 +3,7 @@
 
 **Title:** Comparative Analysis of Deep Learning Architectures for Sentiment Analysis of Movie Reviews  
 **Team:** Meesha Gupta (230953090); Ratul Jha (230953338); Harshavardhan Reddy (230953396); Kshitij Singh (230953460)  
-**Repository:** `[INSERT SHARED GITHUB REPOSITORY URL BEFORE SUBMISSION]`  
+**Repository:** https://github.com/HarshavardhanReddy585/imdb-sentiment-analysis-ict4442  
 **Submission date:** 02 October 2026 (late submission; seek faculty approval for acceptance)
 
 ## 1. Literature Review
