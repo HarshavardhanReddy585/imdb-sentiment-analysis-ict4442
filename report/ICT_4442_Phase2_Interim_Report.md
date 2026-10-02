@@ -51,6 +51,19 @@ The reported values come from real runs with seed 42 and the official IMDb folde
 
 ## 4. Individual Contribution Log
 
+## 4A. Completion Evidence Available at Interim Submission
+
+The following evidence is available in the canonical GitHub repository at the time of this draft:
+
+- Official IMDb archive downloaded locally and excluded from Git through `.gitignore`.
+- Reproducible preprocessing and training scripts under `src/`.
+- MLP and 1D-CNN PyTorch implementations with saved validation/test metrics under `results/`.
+- BiLSTM implementation with a CPU smoke-run metric file under `results/`.
+- Two commits documenting the model/evidence work: `8544666` and `6dee82d`.
+- Python compilation and model-import checks completed successfully.
+
+The MLP and CNN results are interim evidence from a 3,200-train / 800-validation / 1,000-test subset. They are not claimed as final full-dataset scores. DistilBERT, full-scale four-model training, learning curves, and systematic error analysis remain outstanding.
+
 | Member | Registration no. | Task completed to date | Signature |
 |---|---:|---|---|
 | Meesha Gupta | 230953090 | DistilBERT model ownership; literature/repository evidence to be added by member | __________________ |
