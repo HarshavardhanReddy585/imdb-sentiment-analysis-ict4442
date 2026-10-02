@@ -44,7 +44,7 @@ The implementation is deliberately CPU-friendly for the delayed interim submissi
 |---|---|---|---|---|
 | MLP with averaged learned embeddings | Kshitij Singh | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Smoke run on 800 train / 200 validation reviews; the unoptimized CPU baseline predicted one class. |
 | 1D-CNN with max-pooled width-3 filters | Ratul Jha | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Same smoke split; lightweight fixed-filter implementation requires optimization before final comparison. |
-| BiLSTM | Kshitij Singh | Planned / not evidenced in current folder | Pending | Must be added before final evaluation. |
+| BiLSTM | Harshavardhan Reddy | Implemented in `src/models/bilstm.py` and `src/train_bilstm.py` | Validation accuracy 46.5%, F1 0.389; smoke test accuracy 51.0%, F1 0.372 | Two-epoch CPU smoke run on the common 800/200/200 split; needs tuning and full-scale rerun. |
 | DistilBERT | Meesha Gupta | Planned / not evidenced in current folder | Pending | Fine-tune after baseline comparison; record model version and hyperparameters. |
 
 The reported values come from a real smoke run with seed 42, 1,000 labelled samples, and 40-token sequences. They are preliminary and intentionally not presented as final performance. The generated JSON/CSV files are checked into the repository as evidence.
