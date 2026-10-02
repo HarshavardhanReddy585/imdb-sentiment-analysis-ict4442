@@ -122,7 +122,7 @@ The official training directory is shuffled with seed 42 and divided into 80\% t
 The repository contains reproducible PyTorch implementations for the MLP, 1D-CNN, and BiLSTM. DistilBERT remains pending and is not represented by fabricated results.
 
 \subsection*{A. Multi-Layer Perceptron (MLP)}
-The MLP uses a learned embedding layer, masked average pooling, a 64-unit ReLU hidden layer, dropout, and a binary classifier. It was trained for two epochs on the larger interim subset. Validation accuracy was 75.75\% with F1 = 0.753; test accuracy was 69.2\% with F1 = 0.686.
+The MLP uses a learned embedding layer, masked average pooling, a 64-unit ReLU hidden layer, dropout, and a binary classifier. It was trained for three epochs on the full 20,000/5,000/25,000 protocol. Validation accuracy was 88.50\% with F1 = 0.884; test accuracy was 86.31\% with F1 = 0.858.
 
 \subsection*{B. 1D Convolutional Neural Network (1D-CNN)}
 The CNN uses a learned embedding layer and parallel Conv1D branches with kernel widths 3, 4, and 5, followed by max pooling and classification. On the same two-epoch interim subset, validation accuracy was 61.5\% with F1 = 0.693; test accuracy was 58.2\% with F1 = 0.671. The positive-class recall bias is recorded as a tuning risk.
@@ -140,7 +140,7 @@ DistilBERT is the fourth proposed architecture. Its implementation and metrics a
 \toprule
 \textbf{Model} & \textbf{Owner} & \textbf{Status} & \textbf{Preliminary metric} & \textbf{Notes} \\
 \midrule
-MLP & Kshitij Singh & Complete & Val Acc: 75.75\%\\Val F1: 0.753 & 3,200/800/1,000 interim run; 512-token inputs. \\
+MLP & Kshitij Singh & Complete & Val Acc: 88.50\%\\Val F1: 0.884 & Full 20,000/5,000/25,000 run; 512-token inputs. \\
 \midrule
 1D-CNN & Ratul Jha & Complete & Val Acc: 61.5\%\\Val F1: 0.693 & Same split; positive-class recall bias requires tuning. \\
 \midrule
