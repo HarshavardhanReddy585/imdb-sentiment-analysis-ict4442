@@ -5,6 +5,7 @@ results/*
 !results/.gitkeep
 !results/metrics.json
 !results/metrics.csv
+!results/*_metrics.json
 __pycache__/
 *.py[cod]
 .venv/
