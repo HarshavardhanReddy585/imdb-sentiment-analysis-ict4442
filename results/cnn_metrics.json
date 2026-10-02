@@ -2,41 +2,41 @@
   "model": "cnn",
   "seed": 42,
   "dataset": {
-    "train": 800,
-    "validation": 200,
-    "test": 200,
-    "vocab": 14929,
+    "train": 3200,
+    "validation": 800,
+    "test": 1000,
+    "vocab": 20002,
     "max_length": 512
   },
   "validation": {
-    "accuracy": 0.535,
-    "precision": 0.535,
-    "recall": 1.0,
-    "f1": 0.6970684039087948,
+    "accuracy": 0.615,
+    "precision": 0.5686274509803921,
+    "recall": 0.8877551020408163,
+    "f1": 0.6932270916334662,
     "confusion_matrix": [
       [
-        0,
-        93
+        144,
+        264
       ],
       [
-        0,
-        107
+        44,
+        348
       ]
     ]
   },
   "test": {
-    "accuracy": 0.5,
-    "precision": 0.5,
-    "recall": 1.0,
-    "f1": 0.6666666666666666,
+    "accuracy": 0.582,
+    "precision": 0.5531088082901554,
+    "recall": 0.854,
+    "f1": 0.6713836477987422,
     "confusion_matrix": [
       [
-        0,
-        100
+        155,
+        345
       ],
       [
-        0,
-        100
+        73,
+        427
       ]
     ]
   }

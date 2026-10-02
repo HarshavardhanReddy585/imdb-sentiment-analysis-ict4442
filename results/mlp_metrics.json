@@ -2,41 +2,41 @@
   "model": "mlp",
   "seed": 42,
   "dataset": {
-    "train": 800,
-    "validation": 200,
-    "test": 200,
-    "vocab": 14929,
+    "train": 3200,
+    "validation": 800,
+    "test": 1000,
+    "vocab": 20002,
     "max_length": 512
   },
   "validation": {
-    "accuracy": 0.65,
-    "precision": 0.7761194029850746,
-    "recall": 0.48598130841121495,
-    "f1": 0.5977011494252873,
+    "accuracy": 0.7575,
+    "precision": 0.751269035532995,
+    "recall": 0.7551020408163265,
+    "f1": 0.7531806615776081,
     "confusion_matrix": [
       [
-        78,
-        15
+        310,
+        98
       ],
       [
-        55,
-        52
+        96,
+        296
       ]
     ]
   },
   "test": {
-    "accuracy": 0.515,
-    "precision": 0.5263157894736842,
-    "recall": 0.3,
-    "f1": 0.3821656050955414,
+    "accuracy": 0.692,
+    "precision": 0.7,
+    "recall": 0.672,
+    "f1": 0.6857142857142857,
     "confusion_matrix": [
       [
-        73,
-        27
+        356,
+        144
       ],
       [
-        70,
-        30
+        164,
+        336
       ]
     ]
   }
