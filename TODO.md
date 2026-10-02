@@ -19,7 +19,7 @@
 
 ## Final phase
 
-- [~] Implement BiLSTM model module and training entry point; run and evaluate next.
+- [~] Implement BiLSTM model module and training entry point; forward smoke test passes, training/evaluation pending.
 - [ ] Implement DistilBERT.
 - [ ] Evaluate all models on the same held-out test set.
 - [ ] Add confusion matrices, learning curves, and error analysis.

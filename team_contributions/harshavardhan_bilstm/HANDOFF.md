@@ -10,4 +10,4 @@ Planned implementation:
 - Dropout and sigmoid/softmax classification head
 - Common metrics and saved confusion matrix
 
-Implementation started in `src/models/bilstm.py`. Training results are pending dependency setup and experiment run. Record the final hyperparameters, runtime, and failure cases here after implementation.
+Implementation started in `src/models/bilstm.py`. PyTorch forward smoke test passes with logits shape `[2, 2]`; training results are still pending. Record final hyperparameters, runtime, and failure cases here after training.
