@@ -1,6 +1,6 @@
 # Team contribution handoff area
 
-This folder is a structured drop zone for the four model owners from the approved synopsis. Each member has a separate folder so their code, notes, and evidence can be reviewed independently before anything is merged into `src/`.
+This folder is a structured drop zone for the four model owners from the approved synopsis. Each member has a separate folder so their code, notes, and evidence can be reviewed independently before anything is merged into `src/`. Separate teammate repositories are optional; they do not need to create repositories if the work is being completed in the canonical repository.
 
 ## Assignment map
 
@@ -22,4 +22,4 @@ Incoming work stays in its member folder until it passes the common contract:
 5. No dataset archive, secrets, copied tutorial code, or fabricated result.
 6. Member attribution and commit history preserved.
 
-After review, the working implementation can be copied or merged into `src/models/` and recorded in the report.
+After review, the working implementation can be copied or merged into `src/models/` and recorded in the report. If no teammate work arrives, implement the remaining models in the canonical repository and report the actual contribution situation honestly.

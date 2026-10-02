@@ -30,11 +30,12 @@
 
 ## Team handoff status
 
-- [ ] Meesha: DistilBERT repository/code/evidence received.
-- [ ] Ratul: 1D-CNN repository/code/evidence received.
-- [ ] Harshavardhan: BiLSTM implementation completed.
-- [ ] Kshitij: MLP repository/code/evidence received.
-- [ ] Review all incoming code against the common split and metrics.
+- [ ] Meesha: DistilBERT contribution/code/evidence received, if available.
+- [ ] Ratul: 1D-CNN contribution/code/evidence received, if available.
+- [x] Harshavardhan: BiLSTM implementation completed with preliminary metrics.
+- [ ] Kshitij: MLP contribution/code/evidence received, if available.
+- [ ] Review any incoming code against the common split and metrics.
+- [ ] If teammates remain unavailable, implement and document all remaining models in this canonical repository without inventing individual contributions.
 
 ## Repository integration policy
 
