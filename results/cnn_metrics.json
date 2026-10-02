@@ -1,0 +1,43 @@
+{
+  "model": "cnn",
+  "seed": 42,
+  "dataset": {
+    "train": 800,
+    "validation": 200,
+    "test": 200,
+    "vocab": 14929,
+    "max_length": 512
+  },
+  "validation": {
+    "accuracy": 0.535,
+    "precision": 0.535,
+    "recall": 1.0,
+    "f1": 0.6970684039087948,
+    "confusion_matrix": [
+      [
+        0,
+        93
+      ],
+      [
+        0,
+        107
+      ]
+    ]
+  },
+  "test": {
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "confusion_matrix": [
+      [
+        0,
+        100
+      ],
+      [
+        0,
+        100
+      ]
+    ]
+  }
+}

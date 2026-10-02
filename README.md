@@ -15,15 +15,17 @@ This repository compares four approved model families on the IMDb binary sentime
 
 ## Current status
 
-The Phase 2 report and CPU-friendly MLP/CNN experiment script are being completed. BiLSTM and DistilBERT remain final-phase work. Results must be generated from the official IMDb dataset; no fabricated metrics are acceptable.
+The Phase 2 report, PyTorch MLP/CNN/BiLSTM implementations, and reproducible smoke-run evidence are present. DistilBERT remains final-phase work. Results must be generated from the official IMDb dataset; no fabricated metrics are acceptable.
 
 ## Reproducibility
 
 ```powershell
-python src/run_experiments.py --archive data/aclImdb_v1.tar.gz --max-train 4000 --max-test 1000
+python src/train_scratch_models.py --model mlp --data-root data/aclImdb --max-train 1000 --max-test 200 --max-len 512 --epochs 2
+python src/train_scratch_models.py --model cnn --data-root data/aclImdb --max-train 1000 --max-test 200 --max-len 512 --epochs 2
+python src/train_bilstm.py --data-root data/aclImdb --max-train 1000 --max-test 200 --sequence-length 40 --epochs 2
 ```
 
-The script writes metrics to `results/metrics.json` and `results/metrics.csv`.
+The scripts write model-specific metrics to `results/*_metrics.json`. The original preprocessing smoke runner writes `results/metrics.json` and `results/metrics.csv`.
 
 ## Team and repository policy
 

@@ -25,15 +25,15 @@ The literature indicates a progression from static or pooled word representation
 
 ## 2. Dataset Acquisition & Preprocessing
 
-The project uses the IMDb Large Movie Review Dataset [1], consisting of 25,000 labelled training reviews and 25,000 labelled test reviews, balanced between positive and negative classes. The official archive is downloaded from Stanford AI and recorded in `phase2/data/` when running the pipeline.
+The project uses the IMDb Large Movie Review Dataset [1], consisting of 25,000 labelled training reviews and 25,000 labelled test reviews, balanced between positive and negative classes. The official archive is downloaded locally under `data/` when running the pipeline and is excluded from Git.
 
-The reproducible pipeline is implemented in `phase2/run_experiments.py`:
+The reproducible pipelines are implemented in `src/train_scratch_models.py` and `src/train_bilstm.py`:
 
 1. Read review text from the official `train/neg`, `train/pos`, `test/neg`, and `test/pos` folders.
 2. Lowercase text and tokenize alphabetic words plus apostrophes; retain sentiment-bearing words such as `not`.
 3. Shuffle the official training split with seed 42 and divide it into 80% train and 20% validation. The official test split remains untouched until final evaluation.
 4. Construct the vocabulary from the training partition only; keep the 12,000 most frequent tokens plus `<pad>` and `<unk>`.
-5. Encode each review as a fixed-length sequence of 40 token IDs for the CPU-friendly interim smoke run, padding shorter reviews and truncating longer reviews deterministically. The final run should increase this limit after framework-based models are added.
+5. Encode each review as a fixed-length sequence, padding shorter reviews and truncating longer reviews deterministically. The MLP/CNN smoke runs use 512 tokens; the BiLSTM smoke run uses 40 tokens to keep CPU runtime manageable.
 6. Use the same encoded partitions and metrics for every model. No test-set score is used for model selection.
 
 The implementation is deliberately CPU-friendly for the delayed interim submission. It supports a small reproducibility run through `--max-train` and `--max-test`; the final report must rerun the same protocol at full scale and include BiLSTM and DistilBERT.
@@ -42,12 +42,12 @@ The implementation is deliberately CPU-friendly for the delayed interim submissi
 
 | Model | Owner | Status | Preliminary metric | Notes |
 |---|---|---|---|---|
-| MLP with averaged learned embeddings | Kshitij Singh | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Smoke run on 800 train / 200 validation reviews; the unoptimized CPU baseline predicted one class. |
-| 1D-CNN with max-pooled width-3 filters | Ratul Jha | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Same smoke split; lightweight fixed-filter implementation requires optimization before final comparison. |
+| MLP with averaged learned embeddings | Kshitij Singh | Implemented in `src/models/mlp.py` and `src/train_scratch_models.py` | Validation accuracy 65.0%, F1 0.598 | Two-epoch PyTorch smoke run on 800 train / 200 validation reviews with 512-token inputs; test accuracy 51.5%, F1 0.382. |
+| 1D-CNN with max-pooled multi-width filters | Ratul Jha | Implemented in `src/models/cnn1d.py` and `src/train_scratch_models.py` | Validation accuracy 53.5%, F1 0.697 | Two-epoch PyTorch smoke run on the same split with 512-token inputs; the current run predicts the positive class too often and needs tuning. |
 | BiLSTM | Harshavardhan Reddy | Implemented in `src/models/bilstm.py` and `src/train_bilstm.py` | Validation accuracy 46.5%, F1 0.389; smoke test accuracy 51.0%, F1 0.372 | Two-epoch CPU smoke run on the common 800/200/200 split; needs tuning and full-scale rerun. |
 | DistilBERT | Meesha Gupta | Planned / not evidenced in current folder | Pending | Fine-tune after baseline comparison; record model version and hyperparameters. |
 
-The reported values come from a real smoke run with seed 42, 1,000 labelled samples, and 40-token sequences. They are preliminary and intentionally not presented as final performance. The generated JSON/CSV files are checked into the repository as evidence.
+The reported values come from real smoke runs with seed 42 and 1,000 labelled samples. MLP/CNN use 512-token inputs; BiLSTM uses 40-token inputs. They are preliminary and intentionally not presented as final performance. The generated JSON files are checked into the repository as evidence.
 
 ## 4. Individual Contribution Log
 
@@ -58,7 +58,7 @@ The reported values come from a real smoke run with seed 42, 1,000 labelled samp
 | Harshavardhan Reddy | 230953396 | Report integration, preprocessing pipeline, experiment orchestration | __________________ |
 | Kshitij Singh | 230953460 | MLP model ownership; evaluation and comparison to be verified by member | __________________ |
 
-**Git evidence:** The current local folder did not contain a Git history when inspected. Before submission, create/use the team repository, make separate commits attributable to each member, and paste the repository URL above. The signatures must be obtained from all members; they must not be simulated.
+**Git evidence:** The canonical private repository is linked above. The owner-specific files and smoke metrics are present, but member attribution and signatures must still be verified honestly. Do not simulate signatures or claim work that a member did not perform.
 
 ## 5. Risk / Plan for Remaining Work
 
