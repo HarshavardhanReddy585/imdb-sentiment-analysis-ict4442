@@ -11,7 +11,7 @@ This repository compares four approved model families on the IMDb binary sentime
 
 ## Repository layout
 
-`src/` contains reusable preprocessing, training, and evaluation code. `data/` is reserved for locally downloaded data and is ignored by Git. `results/` contains generated metrics and figures. `report/` contains the interim and final report sources. `docs/` contains the supplied project guidelines and synopsis.
+`src/` contains reusable preprocessing, model, training, and evaluation code. `data/` is reserved for locally downloaded data and is ignored by Git. `results/` contains generated metrics and figures. `report/` contains the interim and final report sources.
 
 ## Current status
 
@@ -27,4 +27,4 @@ The script writes metrics to `results/metrics.json` and `results/metrics.csv`.
 
 ## Team and repository policy
 
-This repository is the canonical submission repository. Teammate repositories may be connected as Git remotes for review, but code is merged only after checking ownership, licensing, dependencies, and reproducibility. Dataset archives, generated caches, secrets, and temporary files are never committed.
+This repository is the canonical submission repository. Each model owner must push their implementation and evidence through a named branch or pull request. See `MODEL_CONTRIBUTION_CONTRACT.md`. Dataset archives, generated caches, secrets, and temporary files are never committed.
