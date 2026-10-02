@@ -5,13 +5,14 @@
 - [x] Create a clean canonical project directory.
 - [x] Add supplied guidelines and synopsis under `docs/`.
 - [x] Add reproducible MLP/CNN experiment script.
-- [x] Add interim report draft.
+- [x] Add interim report draft and actual smoke-run metrics.
 - [x] Initialize local Git repository on `main`.
-- [ ] Create or select the GitHub repository and add `origin`.
-- [ ] Download the official IMDb archive into `data/`.
-- [ ] Run the smoke experiment and save real metrics under `results/`.
-- [ ] Update the interim report with measured metrics.
-- [ ] Add actual GitHub URL to the report.
+- [x] Create the private GitHub repository and add `origin`.
+- [x] Download and extract the official IMDb archive into `data/`.
+- [x] Run the smoke experiment and save real metrics under `results/`.
+- [x] Update the interim report with measured metrics.
+- [x] Add the actual GitHub URL to the report.
+- [x] Create separate teammate handoff folders under `team_contributions/`.
 - [ ] Record the solo contribution accurately; do not invent teammate signatures.
 - [ ] Request faculty approval for late submission.
 - [ ] Submit Part B through MS Forms.
@@ -26,6 +27,14 @@
 - [ ] Prepare Part C report and signed contribution statement.
 - [ ] Prepare presentation and viva notes.
 - [ ] Push final code and submit the repository link.
+
+## Team handoff status
+
+- [ ] Meesha: DistilBERT repository/code/evidence received.
+- [ ] Ratul: 1D-CNN repository/code/evidence received.
+- [ ] Harshavardhan: BiLSTM implementation completed.
+- [ ] Kshitij: MLP repository/code/evidence received.
+- [ ] Review all incoming code against the common split and metrics.
 
 ## Repository integration policy
 
