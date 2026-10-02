@@ -1,0 +1,3 @@
+model,split,accuracy,precision,recall,f1
+MLP_embedding_average,validation,0.465,0.0,0.0,0.0
+CNN_1D_maxpool,validation,0.465,0.0,0.0,0.0

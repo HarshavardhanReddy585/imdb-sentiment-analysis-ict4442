@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 
 TOKEN = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
+MAX_LEN = 40
 
 def read_reviews(root: Path, limit: int | None = None):
     rows = []
@@ -46,17 +47,17 @@ def batches(n, size, rng):
     idx = np.arange(n); rng.shuffle(idx)
     for i in range(0, n, size): yield idx[i:i+size]
 
-def vectorize(rows, vocab, max_len=200):
+def vectorize(rows, vocab, max_len=MAX_LEN):
     X = np.zeros((len(rows), max_len), dtype=np.int32); y=[]
     for i, (text, label) in enumerate(rows):
         ids = [vocab.get(w, 1) for w in tok(text)[:max_len]]
         X[i, :len(ids)] = ids; y.append(label)
     return X, np.asarray(y, dtype=np.float32)
 
-def train_mlp(Xtr, ytr, Xva, yva, V, seed=42, epochs=4):
+def train_mlp(Xtr, ytr, Xva, yva, V, seed=42, epochs=10):
     rng=np.random.default_rng(seed); d=48
     E=rng.normal(0,.08,(V,d)); W1=rng.normal(0,.05,(d,32)); b1=np.zeros(32); W2=rng.normal(0,.05,32); b2=0.
-    lr=.05
+    lr=.08
     def forward(X):
         mask=(X>1)[...,None]; h=(E[X]*mask).sum(1)/np.maximum(mask.sum(1),1); z=h@W1+b1; a=np.tanh(z); q=sigmoid(a@W2+b2); return h,z,a,q
     for _ in range(epochs):
@@ -70,9 +71,9 @@ def train_mlp(Xtr, ytr, Xva, yva, V, seed=42, epochs=4):
             W2-=lr*dW2; b2-=lr*db2; W1-=lr*dW1; b1-=lr*db1; E-=lr*dE
     _,_,_,q=forward(Xva); return metrics(yva,(q>=.5).astype(int))
 
-def train_cnn(Xtr, ytr, Xva, yva, V, seed=42, epochs=4):
-    rng=np.random.default_rng(seed); d=32; k=3; F=24
-    E=rng.normal(0,.08,(V,d)); K=rng.normal(0,.08,(F,k,d)); W=rng.normal(0,.05,F); b=0.; lr=.04
+def train_cnn(Xtr, ytr, Xva, yva, V, seed=42, epochs=10):
+    rng=np.random.default_rng(seed); d=16; k=3; F=4
+    E=rng.normal(0,.08,(V,d)); K=rng.normal(0,.08,(F,k,d)); W=rng.normal(0,.05,F); b=0.; lr=.08
     def features(X):
         emb=E[X]; out=np.zeros((len(X),F))
         for i in range(len(X)):
@@ -92,14 +93,14 @@ def train_cnn(Xtr, ytr, Xva, yva, V, seed=42, epochs=4):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--archive', required=True); ap.add_argument('--max-train',type=int,default=4000); ap.add_argument('--max-test',type=int,default=1000); ap.add_argument('--seed',type=int,default=42); a=ap.parse_args()
-    random.seed(a.seed); np.random.seed(a.seed); base=Path(__file__).parent; data=extract_archive(Path(a.archive),base/'data'); out=base/'results'; out.mkdir(exist_ok=True)
+    random.seed(a.seed); np.random.seed(a.seed); project=Path(__file__).parents[1]; data=extract_archive(Path(a.archive),project/'data'); out=project/'results'; out.mkdir(exist_ok=True)
     alltr=read_reviews(data/'train',a.max_train); test=read_reviews(data/'test',a.max_test); random.shuffle(alltr); cut=int(.8*len(alltr)); tr,va=alltr[:cut],alltr[cut:]
     counts={};
     for text,_ in tr:
         for w in set(tok(text)): counts[w]=counts.get(w,0)+1
     words=sorted(counts,key=counts.get,reverse=True)[:12000]; vocab={'<pad>':0,'<unk>':1}; vocab.update({w:i+2 for i,w in enumerate(words)})
     Xtr,ytr=vectorize(tr,vocab); Xva,yva=vectorize(va,vocab); Xte,yte=vectorize(test,vocab)
-    results={'dataset':{'train':len(tr),'validation':len(va),'test':len(test),'vocab':len(vocab),'max_length':200,'seed':a.seed},'models':{}}
+    results={'dataset':{'train':len(tr),'validation':len(va),'test':len(test),'vocab':len(vocab),'max_length':MAX_LEN,'seed':a.seed},'models':{}}
     results['models']['MLP_embedding_average']={'validation':train_mlp(Xtr,ytr,Xva,yva,len(vocab),a.seed)}
     results['models']['CNN_1D_maxpool']={'validation':train_cnn(Xtr,ytr,Xva,yva,len(vocab),a.seed)}
     (out/'metrics.json').write_text(json.dumps(results,indent=2),encoding='utf-8')

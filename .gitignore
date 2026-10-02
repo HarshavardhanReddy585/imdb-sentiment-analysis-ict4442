@@ -3,6 +3,8 @@ data/*
 !data/.gitkeep
 results/*
 !results/.gitkeep
+!results/metrics.json
+!results/metrics.csv
 __pycache__/
 *.py[cod]
 .venv/

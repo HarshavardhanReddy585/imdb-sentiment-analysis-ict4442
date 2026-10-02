@@ -33,7 +33,7 @@ The reproducible pipeline is implemented in `phase2/run_experiments.py`:
 2. Lowercase text and tokenize alphabetic words plus apostrophes; retain sentiment-bearing words such as `not`.
 3. Shuffle the official training split with seed 42 and divide it into 80% train and 20% validation. The official test split remains untouched until final evaluation.
 4. Construct the vocabulary from the training partition only; keep the 12,000 most frequent tokens plus `<pad>` and `<unk>`.
-5. Encode each review as a fixed-length sequence of 200 token IDs, padding shorter reviews and truncating longer reviews deterministically.
+5. Encode each review as a fixed-length sequence of 40 token IDs for the CPU-friendly interim smoke run, padding shorter reviews and truncating longer reviews deterministically. The final run should increase this limit after framework-based models are added.
 6. Use the same encoded partitions and metrics for every model. No test-set score is used for model selection.
 
 The implementation is deliberately CPU-friendly for the delayed interim submission. It supports a small reproducibility run through `--max-train` and `--max-test`; the final report must rerun the same protocol at full scale and include BiLSTM and DistilBERT.
@@ -42,12 +42,12 @@ The implementation is deliberately CPU-friendly for the delayed interim submissi
 
 | Model | Owner | Status | Preliminary metric | Notes |
 |---|---|---|---|---|
-| MLP with averaged learned embeddings | Kshitij Singh | Implemented in `run_experiments.py` | **Populate from `results/metrics.json` after the run** | Embedding average -> tanh hidden layer -> sigmoid output; establishes an order-insensitive baseline. |
-| 1D-CNN with max-pooled width-3 filters | Ratul Jha | Implemented in `run_experiments.py` | **Populate from `results/metrics.json` after the run** | Local n-gram filters followed by max pooling and binary classifier. |
+| MLP with averaged learned embeddings | Kshitij Singh | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Smoke run on 800 train / 200 validation reviews; the unoptimized CPU baseline predicted one class. |
+| 1D-CNN with max-pooled width-3 filters | Ratul Jha | Implemented in `run_experiments.py` | Validation accuracy 46.5%, F1 0.0 | Same smoke split; lightweight fixed-filter implementation requires optimization before final comparison. |
 | BiLSTM | Kshitij Singh | Planned / not evidenced in current folder | Pending | Must be added before final evaluation. |
 | DistilBERT | Meesha Gupta | Planned / not evidenced in current folder | Pending | Fine-tune after baseline comparison; record model version and hyperparameters. |
 
-The repository must not claim results until `python phase2/run_experiments.py ...` has completed and the generated JSON/CSV files are checked into the shared repository.
+The reported values come from a real smoke run with seed 42, 1,000 labelled samples, and 40-token sequences. They are preliminary and intentionally not presented as final performance. The generated JSON/CSV files are checked into the repository as evidence.
 
 ## 4. Individual Contribution Log
 
