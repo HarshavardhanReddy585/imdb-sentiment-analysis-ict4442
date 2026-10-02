@@ -19,7 +19,7 @@
 
 ## Final phase
 
-- [ ] Implement BiLSTM.
+- [~] Implement BiLSTM model module and training entry point; run and evaluate next.
 - [ ] Implement DistilBERT.
 - [ ] Evaluate all models on the same held-out test set.
 - [ ] Add confusion matrices, learning curves, and error analysis.
