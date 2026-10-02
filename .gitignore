@@ -1,0 +1,17 @@
+# Datasets and generated artifacts
+data/*
+!data/.gitkeep
+results/*
+!results/.gitkeep
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
