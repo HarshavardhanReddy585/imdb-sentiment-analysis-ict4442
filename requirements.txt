@@ -1,7 +1,0 @@
-# Interim CPU pipeline
-numpy>=2.0
-pandas>=2.0
-
-# Final-model dependencies
-torch>=2.2
-transformers>=4.40
