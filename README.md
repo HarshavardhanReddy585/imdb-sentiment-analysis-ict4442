@@ -6,10 +6,21 @@ This repository contains the model notebook contributed by Harshavardhan Reddy f
 
 ## Repository structure
 
+<!-- BEGIN AUTO-GENERATED REPOSITORY STRUCTURE -->
 ```text
-models/
-└── Bilstm.ipynb
+imdb-sentiment-project/
+├── .github/
+│   └── workflows/
+│       └── update-readme-structure.yml
+├── models/
+│   └── Bilstm.ipynb
+├── scripts/
+│   └── update_readme_structure.py
+└── README.md
 ```
+<!-- END AUTO-GENERATED REPOSITORY STRUCTURE -->
+
+The structure shown above is generated automatically from the repository files. Whenever a new file is pushed to `main`, GitHub Actions updates this section.
 
 The remaining model notebooks will be added by their respective contributors from their own GitHub accounts.
 
