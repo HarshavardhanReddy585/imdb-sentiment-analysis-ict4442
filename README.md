@@ -8,12 +8,13 @@ This repository contains the model notebook contributed by Harshavardhan Reddy f
 
 <!-- BEGIN AUTO-GENERATED REPOSITORY STRUCTURE -->
 ```text
-imdb-sentiment-project/
+imdb-sentiment-analysis-ict4442/
 ├── .github/
 │   └── workflows/
 │       └── update-readme-structure.yml
 ├── models/
-│   └── Bilstm.ipynb
+│   ├── Bilstm.ipynb
+│   └── CNN.ipynb
 ├── scripts/
 │   └── update_readme_structure.py
 └── README.md
