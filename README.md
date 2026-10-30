@@ -22,8 +22,14 @@ imdb-sentiment-analysis-ict4442/
 │   │   ├── metrics.json
 │   │   ├── test_probs.npy
 │   │   └── val_probs.npy
+│   ├── cnn/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
 │   ├── logs/
 │   │   ├── bilstm.log
+│   │   ├── cnn.log
 │   │   └── mlp.log
 │   ├── history.json
 │   ├── metrics.json
