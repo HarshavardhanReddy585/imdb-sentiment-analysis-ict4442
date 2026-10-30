@@ -1,0 +1,9 @@
+MLP: 2,568,321 parameters on cuda; config {'lr': 0.001, 'batch_size': 64, 'max_epochs': 20, 'patience': 3}
+epoch  1 train_loss=0.4906 train_acc=0.7843 val_loss=0.3006 val_acc=0.8814 lr=1.00e-03 (3s)
+epoch  2 train_loss=0.2361 train_acc=0.9107 val_loss=0.2660 val_acc=0.8948 lr=1.00e-03 (2s)
+epoch  3 train_loss=0.1692 train_acc=0.9422 val_loss=0.2665 val_acc=0.8976 lr=1.00e-03 (2s)
+epoch  4 train_loss=0.1241 train_acc=0.9635 val_loss=0.2726 val_acc=0.8972 lr=5.00e-04 (2s)
+epoch  5 train_loss=0.1043 train_acc=0.9700 val_loss=0.2774 val_acc=0.8950 lr=2.50e-04 (2s)
+early stopping after epoch 5
+[mlp] val   acc=0.8948 P=0.8967 R=0.8924 F1=0.8945 AUC=0.9565
+[mlp] test  acc=0.8856 P=0.8957 R=0.8729 F1=0.8842 AUC=0.9531
