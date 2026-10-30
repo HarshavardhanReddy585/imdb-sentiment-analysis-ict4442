@@ -14,7 +14,8 @@ imdb-sentiment-analysis-ict4442/
 │       └── update-readme-structure.yml
 ├── models/
 │   ├── Bilstm.ipynb
-│   └── CNN.ipynb
+│   ├── CNN.ipynb
+│   └── MLP.ipynb
 ├── results/
 │   ├── bilstm/
 │   │   ├── history.json
