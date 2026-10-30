@@ -15,9 +15,25 @@ imdb-sentiment-analysis-ict4442/
 ├── models/
 │   ├── Bilstm.ipynb
 │   └── CNN.ipynb
+├── results/
+│   ├── bilstm/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
+│   ├── logs/
+│   │   └── bilstm.log
+│   └── tokenizer.json
 ├── scripts/
 │   └── update_readme_structure.py
-└── README.md
+├── src/
+│   ├── data.py
+│   ├── evaluate.py
+│   ├── models.py
+│   └── train_scratch.py
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
 <!-- END AUTO-GENERATED REPOSITORY STRUCTURE -->
 
