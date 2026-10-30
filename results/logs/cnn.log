@@ -1,0 +1,11 @@
+CNN1D: 2,670,913 parameters on cuda; config {'lr': 0.001, 'batch_size': 512, 'max_epochs': 12, 'patience': 2}
+epoch  1 train_loss=0.6914 train_acc=0.5355 val_loss=0.6807 val_acc=0.5682 lr=1.00e-03 (39s)
+epoch  2 train_loss=0.5929 train_acc=0.7032 val_loss=0.4421 val_acc=0.8066 lr=1.00e-03 (37s)
+epoch  3 train_loss=0.3717 train_acc=0.8377 val_loss=0.3249 val_acc=0.8646 lr=1.00e-03 (34s)
+epoch  4 train_loss=0.2651 train_acc=0.8945 val_loss=0.3185 val_acc=0.8676 lr=1.00e-03 (36s)
+epoch  5 train_loss=0.1894 train_acc=0.9311 val_loss=0.3092 val_acc=0.8776 lr=1.00e-03 (17s)
+epoch  6 train_loss=0.1318 train_acc=0.9549 val_loss=0.3392 val_acc=0.8726 lr=1.00e-03 (27s)
+epoch  7 train_loss=0.0873 train_acc=0.9721 val_loss=0.3616 val_acc=0.8730 lr=5.00e-04 (37s)
+early stopping after epoch 7
+[cnn] val   acc=0.8776 P=0.8749 R=0.8812 F1=0.8780 AUC=0.9455
+[cnn] test  acc=0.8732 P=0.8692 R=0.8787 F1=0.8739 AUC=0.9446
