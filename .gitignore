@@ -1,0 +1,13 @@
+data/
+__pycache__/
+*.pyc
+*.pt
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+# keep training logs as evidence; keep signature images out of the repo
+!results/logs/*.log
+report/figures/signatures/

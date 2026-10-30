@@ -1,0 +1,10 @@
+BiLSTM: 2,667,649 parameters on cuda; config {'lr': 0.0005, 'batch_size': 64, 'max_epochs': 20, 'patience': 3}
+epoch  1 train_loss=0.6166 train_acc=0.6280 val_loss=0.4184 val_acc=0.8176 lr=5.00e-04 (339s)
+epoch  2 train_loss=0.3581 train_acc=0.8541 val_loss=0.3317 val_acc=0.8608 lr=5.00e-04 (340s)
+epoch  3 train_loss=0.2269 train_acc=0.9173 val_loss=0.2929 val_acc=0.8822 lr=5.00e-04 (39s)
+epoch  4 train_loss=0.1537 train_acc=0.9474 val_loss=0.3491 val_acc=0.8732 lr=5.00e-04 (37s)
+epoch  5 train_loss=0.0963 train_acc=0.9694 val_loss=0.3470 val_acc=0.8794 lr=2.50e-04 (64s)
+epoch  6 train_loss=0.0685 train_acc=0.9808 val_loss=0.3575 val_acc=0.8800 lr=1.25e-04 (93s)
+early stopping after epoch 6
+[bilstm] val   acc=0.8822 P=0.8817 R=0.8828 F1=0.8823 AUC=0.9501
+[bilstm] test  acc=0.8722 P=0.8761 R=0.8670 F1=0.8715 AUC=0.9436
