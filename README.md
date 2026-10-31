@@ -44,6 +44,7 @@ imdb-sentiment-analysis-ict4442/
 │   ├── models.py
 │   └── train_scratch.py
 ├── .gitignore
+├── DistillBert.ipynb
 ├── README.md
 └── requirements.txt
 ```
