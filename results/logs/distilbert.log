@@ -1,0 +1,45 @@
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights:   6%|▌         | 6/100 [00:00<00:01, 50.29it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 778.24it/s]
+[transformers] [1mDistilBertForSequenceClassification LOAD REPORT[0m from: distilbert-base-uncased
+Key                     | Status     | 
+------------------------+------------+-
+vocab_layer_norm.bias   | UNEXPECTED | 
+vocab_transform.bias    | UNEXPECTED | 
+vocab_projector.bias    | UNEXPECTED | 
+vocab_transform.weight  | UNEXPECTED | 
+vocab_layer_norm.weight | UNEXPECTED | 
+classifier.bias         | MISSING    | 
+pre_classifier.weight   | MISSING    | 
+pre_classifier.bias     | MISSING    | 
+classifier.weight       | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+DistilBERT: 66,954,241 parameters on cuda
+  epoch 1 step 0/1250 loss=0.6994
+  epoch 1 step 250/1250 loss=0.3174
+  epoch 1 step 500/1250 loss=0.3930
+  epoch 1 step 750/1250 loss=0.3066
+  epoch 1 step 1000/1250 loss=0.1219
+epoch 1 train_loss=0.3529 train_acc=0.8427 val_loss=0.3049 val_acc=0.8830 (102744s)
+  epoch 2 step 0/1250 loss=0.1878
+  epoch 2 step 250/1250 loss=0.4022
+  epoch 2 step 500/1250 loss=0.1962
+  epoch 2 step 750/1250 loss=0.5296
+  epoch 2 step 1000/1250 loss=0.0122
+epoch 2 train_loss=0.1987 train_acc=0.9308 val_loss=0.2946 val_acc=0.9020 (108s)
+  epoch 3 step 0/1250 loss=0.0263
+  epoch 3 step 250/1250 loss=0.2541
+  epoch 3 step 500/1250 loss=0.0119
+  epoch 3 step 750/1250 loss=0.0178
+  epoch 3 step 1000/1250 loss=0.0064
+epoch 3 train_loss=0.1159 train_acc=0.9664 val_loss=0.4530 val_acc=0.8946 (109s)
+  epoch 4 step 0/1250 loss=0.0040
+  epoch 4 step 250/1250 loss=0.0064
+  epoch 4 step 500/1250 loss=0.0033
+  epoch 4 step 750/1250 loss=0.0030
+  epoch 4 step 1000/1250 loss=0.0020
+epoch 4 train_loss=0.0659 train_acc=0.9843 val_loss=0.4461 val_acc=0.9032 (108s)
+early stopping after epoch 4
+[distilbert] val   acc=0.9020 P=0.9244 R=0.8756 F1=0.8993 AUC=0.9641
+[distilbert] test  acc=0.9083 P=0.9248 R=0.8888 F1=0.9065 AUC=0.9695
