@@ -8,6 +8,6 @@ __pycache__/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-# keep training logs as evidence; keep signature images out of the repo
+# keep training logs as evidence
 !results/logs/*.log
-report/figures/signatures/
+report/

@@ -65,11 +65,17 @@ def update_readme() -> None:
     if start == -1 or end == -1 or end < start:
         raise SystemExit("README markers are missing or out of order")
 
+    # Collapsed by default; GitHub expands it on click and hides it again.
     generated = (
         f"{START}\n"
+        "<details>\n"
+        "<summary><b>Show / hide the full file tree</b></summary>\n"
+        "\n"
         "```text\n"
         f"{repository_tree()}\n"
         "```\n"
+        "\n"
+        "</details>\n"
         f"{END}"
     )
     updated = content[:start] + generated + content[end + len(END) :]
