@@ -56,10 +56,75 @@ imdb-sentiment-analysis-ict4442/
 │       └── update-readme-structure.yml
 ├── models/
 │   ├── Bilstm.ipynb
-│   └── CNN.ipynb
+│   ├── CNN.ipynb
+│   ├── DistilBERT.ipynb
+│   └── MLP.ipynb
+├── report/
+│   ├── figures/
+│   │   ├── accuracy_by_length.png
+│   │   ├── confusion_matrices_test.png
+│   │   ├── curves_bilstm.png
+│   │   ├── curves_cnn.png
+│   │   ├── curves_distilbert.png
+│   │   ├── curves_mlp.png
+│   │   ├── mit_logo.png
+│   │   ├── review_length_distribution.png
+│   │   ├── roc_and_metrics_test.png
+│   │   └── training_curves.png
+│   ├── final_report.pdf
+│   └── final_report.tex
+├── results/
+│   ├── bilstm/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
+│   ├── cnn/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
+│   ├── distilbert/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
+│   ├── figures/
+│   │   ├── accuracy_by_length.png
+│   │   ├── confusion_matrices_test.png
+│   │   ├── curves_bilstm.png
+│   │   ├── curves_cnn.png
+│   │   ├── curves_distilbert.png
+│   │   ├── curves_mlp.png
+│   │   ├── review_length_distribution.png
+│   │   ├── roc_and_metrics_test.png
+│   │   └── training_curves.png
+│   ├── logs/
+│   │   ├── bilstm.log
+│   │   ├── cnn.log
+│   │   ├── distilbert.log
+│   │   └── mlp.log
+│   ├── mlp/
+│   │   ├── history.json
+│   │   ├── metrics.json
+│   │   ├── test_probs.npy
+│   │   └── val_probs.npy
+│   ├── comparison_table.csv
+│   ├── error_analysis.json
+│   ├── error_examples.md
+│   └── tokenizer.json
 ├── scripts/
 │   └── update_readme_structure.py
-└── README.md
+├── src/
+│   ├── data.py
+│   ├── evaluate.py
+│   ├── make_figures.py
+│   ├── models.py
+│   ├── train_distilbert.py
+│   └── train_scratch.py
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
 <!-- END AUTO-GENERATED REPOSITORY STRUCTURE -->
 
